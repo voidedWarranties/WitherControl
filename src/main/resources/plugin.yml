@@ -1,0 +1,13 @@
+name: WitherControl
+version: ${project.version}
+main: xyz.voidedxd.withercontrol.WitherControl
+authors: [voidedXD]
+description: Control what withers can do.
+commands:
+  witherwl:
+    description: Whitelist a block for withers to destroy
+    usage: /witherwl <block>
+permissions:
+  withercontrol.whitelist.add:
+    description: Ability to add to the WitherControl Whitelist
+    default: op
