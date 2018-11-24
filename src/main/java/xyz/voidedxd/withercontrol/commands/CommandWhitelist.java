@@ -32,7 +32,6 @@ public class CommandWhitelist implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "You do not have permission to add to the WitherControl Whitelist.");
                 return true;
             }
-            System.out.println(args[0]);
             mat = Material.getMaterial(args[0]);
             if(mat != null) {
                 plugin.getConfig().set(mat.toString(), true);

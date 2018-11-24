@@ -6,7 +6,11 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import xyz.voidedxd.withercontrol.WitherControl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WitherListener implements Listener {
     private WitherControl plugin;
@@ -25,5 +29,19 @@ public class WitherListener implements Listener {
                 event.setCancelled(true);
             }
         }
+    }
+
+    @EventHandler
+    public void CreeperExplode(EntityExplodeEvent event) {
+        List<Block> toRemove = new ArrayList<>();
+        for(Block item : event.blockList()) {
+            if(!plugin.isBreakable(item.getType())) {
+                toRemove.add(item);
+            }
+        }
+        for(Block item : toRemove) {
+            event.blockList().remove(item);
+        }
+        System.out.println(event.blockList());
     }
 }
